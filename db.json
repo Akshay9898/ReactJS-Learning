@@ -1,0 +1,73 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "username": "akshay",
+      "email": "akshay.sonejee@digiqt.com",
+      "password": "akshay",
+      "id": 2
+    },
+    {
+      "username": "akshay",
+      "email": "akshay.sonejee@digiqt.com",
+      "password": "akshay",
+      "id": 3
+    },
+    {
+      "username": "",
+      "email": "",
+      "password": "",
+      "id": 4
+    },
+    {
+      "username": "akshay",
+      "email": "",
+      "password": "",
+      "id": 5
+    },
+    {
+      "username": "akshay",
+      "email": "akshay.sonejee@digiqt.com",
+      "password": "akshay",
+      "id": 6
+    },
+    {
+      "username": "akshay",
+      "email": "akshay.sonejee@digiqt.com",
+      "password": "akshay",
+      "id": 7
+    },
+    {
+      "username": "akshay",
+      "email": "akshay.sonejee@digiqt.com",
+      "password": "akshay",
+      "id": 8
+    },
+    {
+      "username": "akshay",
+      "email": "akshay.sonejee@digiqt.com",
+      "password": "akshay",
+      "id": 9
+    },
+    {
+      "username": "",
+      "email": "",
+      "password": "",
+      "id": 10
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

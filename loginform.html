@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<style>
+    input{
+        font-family: "Roboto",sans-serif;
+        outline: 1;
+        background: #f2f2f2;
+        width: 50%;
+        border: 1;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    form{
+        text-align: center;
+        padding-top: 10rem;
+    }
+    button{
+        cursor: pointer;
+        background-color: green;
+        color: #ffffff;
+        outline: 0;
+        width: 20%;
+        padding: 1rem;
+    }
+    .buttonFun{
+        padding: 15px 25px;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #fff;
+        background-color: #04AA6D;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+    }
+      
+    .buttonFun:hover {background-color: #3e8e41}
+      
+    .buttonFun:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+
+    .para{
+        background-color: red;
+        color: white;
+    }
+</style>
+<body>
+    <div>
+        <div>
+                <input id="username" type="text" placeholder="Username" /><br>
+                <span id="usererror"></span><br>
+                <input id="email" type="text" placeholder="Email" /><br>
+                <span id="emailerror"></span><br>
+                <input id="password" type="password" placeholder="Password" /><br>
+                <span id="passerror"></span><br>
+                <span id="error"></span><br><br>
+                <button onclick="validateData()" id="submit" ondblclick="doubleClick()">
+                    Submit
+                </button>
+                <button class="buttonFun" 
+                id="buttonFun" onmouseenter="buttonFun()" onmouseout="buttonOut()">
+                Click Me
+                </button><br><br>
+                <p id="para"></p>
+                <spna id="buttonError"></spna>
+        </div>
+    </div>
+    
+</body>
+<script>
+    function validateData(){
+        let username = document.getElementById("username")
+        let email = document.getElementById("email")
+        let password = document.getElementById("password")
+        let usererror = document.getElementById("usererror")
+        let emailerror = document.getElementById("emailerror")
+        let emailFormat = /^([A-Za-z0-9_\.])+\@([A-Za-z0-9_\.])+\.([A-Za-z]{2,4})$/
+        let buttonFun = document.getElementById("buttonFun")
+        let buttonError = document.getElementById("buttonError")
+        let para = document.getElementById("para")
+        console.log("data",username)
+
+        if(username.value == "" || email.value == "" || password.value == ""){
+            error.textContent = "Please enter the above empty fields"
+            error.style.color = "red"
+        }
+        else{
+            error.textContent = ""
+        }
+        if(username.value.length < 5){
+            usererror.textContent = "Username would consist more than 5 characters"
+            usererror.style.color = "red"
+        }
+        else{
+            usererror.textContent = ""
+        }
+        if(email.value.match(emailFormat)){
+            emailerror.textContent = ""
+        }
+        else{
+            emailerror.textContent = "Enter valid Email ID"
+            emailerror.style.color = "red"
+        }
+        let data = {}
+        data.username = username.value
+        data.email = email.value
+        data.password = password.value
+
+        fetch("http://localhost:3000/posts",{
+            method:"POST",
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body:JSON.stringify(data)
+        }).then((data)=>{
+            console.log(data)
+        })
+    }
+    function doubleClick(){
+        alert("Please click button once it will work by a single click, Don't Hurry!")
+    }
+    function buttonFun(){
+        buttonError.innerHTML = 
+        "<strong>This button is only to distract you please focus on the login form, Thanks :)</strong>"
+        return false;
+    }
+    function buttonOut(){
+        buttonError.innerHTML = ""
+    }
+</script>
+</html>
