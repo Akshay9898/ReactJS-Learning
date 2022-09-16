@@ -29,7 +29,10 @@ class CredsForm(rest_framework_views.APIView):
 class CredsFormData(rest_framework_views.APIView):
     def get(self,request,id):
         creds_data = creds_model.LoginForm.objects.filter(id=id).last()
-        return create_response(creds_data.get_details(),200)
+        if creds_data:
+            return create_response(creds_data.get_details(),200)
+        else:
+            return create_response("Enter valid id",200)
 
     def put(self,request,id):
         creds_data = creds_model.LoginForm.objects.filter(id=id).last()
