@@ -8,6 +8,7 @@ class LoginForm(models.Model):
 
     def get_details(self):
         data = {
+            "id":self.id,
             "username": self.username,
             "email": self.email,
             "password":self.password

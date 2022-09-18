@@ -1,5 +1,4 @@
 from http.client import HTTPResponse
-import json
 from credsform import models as creds_model
 from credsform import serializers as creds_serializer
 from rest_framework import views as rest_framework_views
